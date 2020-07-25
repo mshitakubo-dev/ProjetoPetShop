@@ -205,17 +205,27 @@ let pets = [
   }
 ]
 
-// Criar função que traz um pet em especifico pelo nome
+
+/**
+ * Função que encontra o pet pelo nome e retorna o objeto Pet, caso o nome 
+ * não encontre seja encontrado, retorna false.
+ * @param nome Recebe como parametro o nome como referência.
+ */
 function encontrarPet(nome) {
   for (let pet of pets) {
-    if (pet.nome === nome) {
-      return pet
+    if (pet.nome.toLowerCase() === nome.toLowerCase()) {
+      return console.log(pet)
     }
   }
-  return false
+  return console.log('Pet ' + nome + ' não encontrado.' )
 }
 
-//Criar função que exibe o Pet caso o nome encontrado seja identico.
+/**
+ * Função que encontra o pet pelo nome e retorna a impressão das propriedades
+ * e valores contidos. Caso não encontre, retorna a String informando: 
+ * Pet não encontrado
+ * @param nome 
+ */
 function exibePet(nome) {
   let pet_encontrado = encontrarPet(nome);
   if (pet_encontrado === false) {
@@ -228,7 +238,8 @@ function exibePet(nome) {
 
 }
 
-/** Castra um pet não castrado.
+/**
+ * Castra um pet não castrado.
  * Caso o pet já seja cadastrado exibe, "o pet já esta castrado" no console
  * 
  * @param number Posição do pet que vai ser vacinado
@@ -245,7 +256,7 @@ function castrar(number) {
 }
 
 /**
- * Adicionar a propriedade de vacina em todos pet da variável pets,
+ * Adicionar a propriedade de vacina em todos pet da array pets,
  * Vacina tem como valor padrão um array vazio.
  */
 function adicionaVacinaNosPets() {
@@ -254,9 +265,10 @@ function adicionaVacinaNosPets() {
     pet.vacina = vacina;
   }
 }
-// busquei no stackoverflow
 
-/** Vacina um pet com a vacina passada como parametro
+
+/** 
+ * Vacina um pet com a vacina passada como parametro
  * Se a vacina existir ele exibe "Vacina já foi aplicada."
  * Se a vacina não existir ele vacina o pet, e adiciona o nome da vacina no array.
  * @param posicao posicao do pet que vai ser vacinado
@@ -298,8 +310,11 @@ function apagaVacinaPet(posicao, nome_vacina) {
     console.log(pet)
   }
 }
+
 /**
  * Metédo que adiciona uma nova propriedade dentro dos objetos Pet
+ * A propriedade deve ser uma String, caso não seja informado nada, retornar uma mensagem
+ * Insira uma String válida.
  * @param propriedade Recebe uma String contendo o nome da nova propriedade
  */
 function adicionaPropriedadePets(propriedade) {
@@ -328,9 +343,6 @@ function atualizaCampo(posicao,campo,novoValor) {
   let pet = pets[posicao-1]
 
   if(tamanhoPets >= posicao){
-
-    console.log(campo + ' ' + novoValor)
-    console.log(pet[campo])
     pet[campo] = novoValor
     console.log(pet)
 
@@ -338,28 +350,3 @@ function atualizaCampo(posicao,campo,novoValor) {
     console.log('Posição inválida!')
   }
 }
-
-//console.log(encontrarPet('Meg'))
-//castrar(6)
-//exibePet('Meg')
-//console.log(pets[3])
-//adicionaVacinaNosPets()
-//console.log(pets[3])
-
-
-
-
-adicionaVacinaNosPets()
-console.log(pets[2])
-vacinaPet(3, 'TESTE')
-vacinaPet(3, 'TESTE1')
-vacinaPet(3, 'TESTE')
-castrar(3)
-castrar(3)
-console.log(pets[2])
-apagaVacinaPet(3, 'TESTE1')
-apagaVacinaPet(3, 'TESTE12')
-console.log(pets[2])
-adicionaPropriedadePets('telefone')
-console.log(pets[2])
-atualizaCampo(3,'telefone','119711158796')
